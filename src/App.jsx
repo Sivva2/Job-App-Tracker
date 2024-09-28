@@ -1,5 +1,16 @@
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import ErrorPage from "./Pages/ErrorPage";
+
 function App() {
-  return <>Ready to code with Mantine, a router would be nice in there 😺</>
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </>
+  );
 }
 
-export default App
+export default App;
