@@ -1,6 +1,11 @@
-import "./global.css";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import JobListItem from "./components/JobListItem";
+import DetailJobItem from "./components/DetailJobItem";
+import EditJobItem from "./components/EditJobItem";
+import DashboardStats from "./components/DashboardStats";
+import "./styles/global.css";
 
 function App() {
   return (
@@ -14,8 +19,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/joblist" element={<JobListItem />} />
         <Route path="/joblist/:jobId" element={<DetailJobItem />} />
-        <Route path="/joblist/:jobId" element={<EditJobItem />} />
-        <Route path="/statistics/:usedId" element={<DashBoardStatistics />} />
+        <Route path="/joblist/editS/:jobId/" element={<EditJobItem />} />
+        <Route path="/stats/:usedId" element={<DashboardStats />} />
         /* check if URL fits to our user Nav */
         <Route path="*" element={<h1>404 Page</h1>} />
       </Routes>
