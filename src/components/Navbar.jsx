@@ -1,45 +1,28 @@
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-import { Navbar } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { Burger } from "@mantine/core";
-
-function Demo() {
-  const [opened, { toggle }] = useDisclosure();
-  return (
-    <Burger
-      lineSize={4}
-      size="xl"
-      opened={opened}
-      onClick={toggle}
-      aria-label="Toggle navigation"
-    />
-  );
-}
-
-function Header() {
-  return (
-    <Navbar className="Navbar" width={{ base: 300 }} height="100vh">
-      <Container>
-        <Navbar.Section>Section 1</Navbar.Section>
-
-        <Navbar.Brand>
-          <Link to="/"> Job-App-Tracker</Link>
-        </Navbar.Brand>
-
-        <Navbar.Section>Section 2</Navbar.Section>
-      </Container>
-    </Navbar>
-  );
-}
-export default Header;
-=======
-import { useDisclosure } from "@mantine/hooks";
-import { Burger } from "@mantine/core";
+import { Button, Burger, Menu } from "@mantine/core";
 import { Link } from "react-router-dom";
+import { useToggle } from "@mantine/hooks";
 
 const Navbar = () => {
   const [opened, { toggle }] = useDisclosure();
+  const [value, { toggleColor }] = useToggle([
+    "blue",
+    "orange",
+    "cyan",
+    "teal",
+  ]);
+
+  const MyMenu = () => {
+  const [color, setColor] = useState('teal');
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  const toggleBtnColor = (newColor) => {
+    setColor(newColor);
+  };
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  };
 
   return (
     <>
@@ -47,13 +30,50 @@ const Navbar = () => {
       {opened && (
         <ul>
           <li>
-            <Link to="/"> Home</Link>
+            <Link to="/"> Home</Link> |<Link to="/joblist"> Job List</Link> |
           </li>
         </ul>
       )}
+
+      <Menu>
+        <Button
+          component={Link}
+          to="/"
+          color={color}
+          onClick={() => { toggleBtnColor("orange"); 
+            toggleDropdown();}} >
+          Home {toggleColor}
+        
+        </Button>
+
+
+        {dropdownVisible && (
+        <Menu.Dropdown>
+ <Menu.Item component={Link} to="/">
+            Home
+          </Menu.Item>
+          <Menu.Item component={Link} to="/joblist">
+            Job List
+          </Menu.Item>
+</Menu.Dropdown>)}
+</Menu>
+
+        <Button
+          component={Link}
+          to="/joblist"
+          color={"cyan"}
+          onClick={() => toggleColor("orange")}
+        
+          Job List {toggleColor}
+        </Button>
+
+        <Menu.Target>
+          <Link to="/joblist"> Job List</Link>
+        </Menu.Target>
+
+      
     </>
   );
 };
 
 export default Navbar;
->>>>>>> 19673aa3ccdb7f0640a4a897e776662e9cdc3d2c
