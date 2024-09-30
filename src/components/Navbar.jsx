@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { Navbar } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -32,3 +33,27 @@ function Header() {
   );
 }
 export default Header;
+=======
+import { useDisclosure } from "@mantine/hooks";
+import { Burger } from "@mantine/core";
+import { Link } from "react-router-dom";
+
+const Navbar = () => {
+  const [opened, { toggle }] = useDisclosure();
+
+  return (
+    <>
+      <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
+      {opened && (
+        <ul>
+          <li>
+            <Link to="/"> Home</Link>
+          </li>
+        </ul>
+      )}
+    </>
+  );
+};
+
+export default Navbar;
+>>>>>>> 19673aa3ccdb7f0640a4a897e776662e9cdc3d2c

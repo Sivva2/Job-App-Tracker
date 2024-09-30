@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
@@ -23,4 +24,13 @@ const ErrorPage = () => {
   );
 };
 
+=======
+const ErrorPage = () => {
+  return (
+    <>
+      <h1>404 Error</h1>
+    </>
+  );
+};
+>>>>>>> 19673aa3ccdb7f0640a4a897e776662e9cdc3d2c
 export default ErrorPage;
