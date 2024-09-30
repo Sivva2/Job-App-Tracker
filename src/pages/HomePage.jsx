@@ -1,8 +1,9 @@
 const HomePage = () => {
   return (
     <>
-      <h1>Home</h1>
+      <h1>Job-App-Tracker</h1>
     </>
   );
 };
+
 export default HomePage;
