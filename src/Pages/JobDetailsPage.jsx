@@ -1,8 +1,9 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const JobListPage = () => {
+const JobDetailPage = () => {
+  const [job, setJob] = useState();
   const { jobId } = useParams();
   const navigate = useNavigate();
 
@@ -29,13 +30,23 @@ const JobListPage = () => {
   }, [jobId]);
 
   return (
-    <div>
-      <h1>Job Detail</h1>
+    <>
+      <h2>Company: {job.company}</h2>
+      <p>Job title: {job.jobTitle}</p>
+      <p>description: {job.description}</p>
+      <p>dateApplied: {job.dateApplied}</p>
+      <p>status: {job.status}</p>
+      <p>contact: {job.contact}</p>
+      <p>jobLink:{job.jobLink}</p>
+      <p> notes:{job.notes}</p>
       <button type="button" onClick={remove}>
         Delete
       </button>
-    </div>
+      <Link to={`/job/${jobId}/Update`}>
+        <button type="button">Update</button>
+      </Link>
+    </>
   );
 };
 
-export default JobListPage;
+export default JobDetailPage;

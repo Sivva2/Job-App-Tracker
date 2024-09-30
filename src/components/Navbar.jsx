@@ -13,67 +13,69 @@ const Navbar = () => {
   ]);
 
   const MyMenu = () => {
-  const [color, setColor] = useState('teal');
-  const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [color, setColor] = useState("teal");
+    const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const toggleBtnColor = (newColor) => {
-    setColor(newColor);
-  };
+    const toggleBtnColor = (newColor) => {
+      setColor(newColor);
+    };
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  };
+    const toggleDropdown = () => {
+      setDropdownVisible(!dropdownVisible);
+    };
 
-  return (
-    <>
-      <Burger opened={opened} onClick={toggle} aria-label="Toggle navigation" />
-      {opened && (
-        <ul>
-          <li>
-            <Link to="/"> Home</Link> |<Link to="/joblist"> Job List</Link> |
-          </li>
-        </ul>
-      )}
+    return (
+      <>
+        <Burger
+          opened={opened}
+          onClick={toggle}
+          aria-label="Toggle navigation"
+        />
+        {opened && (
+          <ul>
+            <li>
+              <Link to="/"> Home</Link> |<Link to="/joblist"> Job List</Link> |
+            </li>
+          </ul>
+        )}
 
-      <Menu>
-        <Button
+        <Menu>
+          <Button
+            component={Link}
+            to="/"
+            color={color}
+            onClick={() => {
+              toggleBtnColor("orange");
+              toggleDropdown();
+            }}
+          >
+            Home {toggleColor}
+          </Button>
+
+          {dropdownVisible && (
+            <Menu.Dropdown>
+              <Menu.Item component={Link} to="/">
+                Home
+              </Menu.Item>
+              <Menu.Item component={Link} to="/joblist">
+                Job List
+              </Menu.Item>
+            </Menu.Dropdown>
+          )}
+        </Menu>
+
+        <button>
           component={Link}
-          to="/"
-          color={color}
-          onClick={() => { toggleBtnColor("orange"); 
-            toggleDropdown();}} >
-          Home {toggleColor}
-        
-        </Button>
-
-
-        {dropdownVisible && (
-        <Menu.Dropdown>
- <Menu.Item component={Link} to="/">
-            Home
-          </Menu.Item>
-          <Menu.Item component={Link} to="/joblist">
-            Job List
-          </Menu.Item>
-</Menu.Dropdown>)}
-</Menu>
-
-        <Button
-          component={Link}
-          to="/joblist"
-          color={"cyan"}
+          to="/joblist" color={"cyan"}
           onClick={() => toggleColor("orange")}
-        
-          Job List {toggleColor}
-        </Button>
+          Job List {...toggleColor}
+        </button>
 
         <Menu.Target>
           <Link to="/joblist"> Job List</Link>
         </Menu.Target>
-
-      
-    </>
-  );
+      </>
+    );
+  };
 };
-
 export default Navbar;
