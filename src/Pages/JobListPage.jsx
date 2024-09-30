@@ -8,7 +8,7 @@ const JobListPage = () => {
 
   const fetchJob = async () => {
     try {
-      const response = await axios.get(`/${jobId}`);
+      const response = await axios.get(`http://localhost:4000//${jobId}`);
       console.log(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -17,7 +17,7 @@ const JobListPage = () => {
 
   const remove = async () => {
     try {
-      const response = await axios.delete(`/${jobId}`);
+      const response = await axios.delete(`http://localhost:4000//${jobId}`);
       console.log("Item deleted:", response.data);
     } catch (error) {
       console.error("Error removing the item:", error);
