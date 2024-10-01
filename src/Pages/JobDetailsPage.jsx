@@ -3,23 +3,27 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const JobDetailPage = () => {
-  const [job, setJob] = useState();
+  const [job, setJob] = useState(null);
   const { jobId } = useParams();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(true);
 
   const fetchJob = async () => {
     try {
-      const response = await axios.get(`http://localhost:4000//${jobId}`);
-      console.log(response.data);
+      const response = await axios.get(`http://localhost:4000/${jobId}`);
+      setJob(response.data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setLoading(false);
     }
   };
 
   const remove = async () => {
     try {
-      const response = await axios.delete(`http://localhost:4000//${jobId}`);
+      const response = await axios.delete(`http://localhost:4000/${jobId}`);
       console.log("Item deleted:", response.data);
+      navigate("/jobs");
     } catch (error) {
       console.error("Error removing the item:", error);
     }
@@ -28,6 +32,8 @@ const JobDetailPage = () => {
   useEffect(() => {
     fetchJob();
   }, [jobId]);
+
+  if (loading) return <p>Loading job details...</p>;
 
   return (
     <>
