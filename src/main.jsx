@@ -13,7 +13,8 @@ import theme from "./styles/theme.js";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Router>
-      <MantineProvider theme={theme}>
+      <MantineProvider theme={{ colorScheme: "dark" }}>
+        {/* <MantineProvider theme={theme}> */}
         <App />
       </MantineProvider>
     </Router>

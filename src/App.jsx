@@ -1,8 +1,10 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./Pages/HomePage";
-import ErrorPage from "./Pages/ErrorPage";
+
 import JobForm from "./components/JobForm";
+
+import Homepage from "./pages/Hompage";
+import Errorpage from "./pages/Errorpage";
 
 function App() {
   return (
@@ -10,8 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<JobForm />} />
-        /* check if URL fits to our user Nav */
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/home" element={<Homepage />} />
+        {/*  check if URL fits to our user Nav */}
+        <Route path="*" element={<Errorpage />} />
       </Routes>
     </div>
   );
