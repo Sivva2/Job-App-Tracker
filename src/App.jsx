@@ -1,10 +1,12 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import HomePage from "./Pages/HomePage";
-import ErrorPage from "./Pages/ErrorPage";
+
 import JobForm from "./components/JobForm";
 import UpdateJob from "./Pages/UpdateJob";
 import JobDetailPage from "./Pages/JobDetailsPage";
+
+import Homepage from "./pages/Hompage";
+import Errorpage from "./pages/Errorpage";
 
 function App() {
   return (
